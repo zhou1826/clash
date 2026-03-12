@@ -75,7 +75,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:url("[https://images.unsplash.com/photo-1542751371-adc38448a05e](https://i.pinimg.com/1200x/81/24/1c/81241c6d8e7e052cb4a982a8061881a1.jpg)") center/cover no-repeat;
+background:url("https://i.pinimg.com/1200x/81/24/1c/81241c6d8e7e052cb4a982a8061881a1.jpg") center/cover no-repeat;
 filter:blur(8px);
 transform:scale(1.1);
 z-index:0;
