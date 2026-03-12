@@ -2,7 +2,8 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>皇室战争 - 游戏介绍与攻略</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>皇室战争 - 官方风格攻略站</title>
 
 <style>
 
@@ -10,13 +11,13 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:"Microsoft YaHei";
+font-family:"Microsoft YaHei",sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#1e3c72,#2a5298);
-color:#333;
-line-height:1.8;
+background:#0f172a;
+color:#e5e7eb;
+line-height:1.7;
 }
 
 /* 导航栏 */
@@ -25,9 +26,10 @@ nav{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,0.7);
-padding:15px;
-z-index:999;
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(6px);
+padding:15px 0;
+z-index:1000;
 }
 
 nav ul{
@@ -37,135 +39,176 @@ list-style:none;
 }
 
 nav li{
-margin:0 20px;
+margin:0 25px;
 }
 
 nav a{
-color:white;
+color:#fff;
 text-decoration:none;
-font-size:18px;
+font-size:17px;
+letter-spacing:1px;
 transition:0.3s;
 }
 
 nav a:hover{
-color:#ffd700;
+color:#facc15;
 }
 
-/* 标题 */
+/* 英雄头图 */
 
-header{
-height:350px;
+.hero{
+height:520px;
 display:flex;
-justify-content:center;
 align-items:center;
-color:white;
+justify-content:center;
 text-align:center;
+position:relative;
+overflow:hidden;
+margin-bottom:40px;
 }
 
-header h1{
-font-size:48px;
-letter-spacing:3px;
-animation:fadeDown 1.5s;
+/* 背景图片层 */
+.hero::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url("[https://images.unsplash.com/photo-1542751371-adc38448a05e](https://i.pinimg.com/1200x/81/24/1c/81241c6d8e7e052cb4a982a8061881a1.jpg)") center/cover no-repeat;
+filter:blur(8px);
+transform:scale(1.1);
+z-index:0;
+}
+
+/* 黑色遮罩层 */
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+z-index:1;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero h1{
+font-size:64px;
+letter-spacing:4px;
+margin-bottom:20px;
+animation:fadeDown 1.5s ease;
+}
+
+.hero p{
+font-size:20px;
+opacity:0.9;
 }
 
 @keyframes fadeDown{
-from{
-opacity:0;
-transform:translateY(-50px);
+from{opacity:0;transform:translateY(-40px)}
+to{opacity:1;transform:translateY(0)}
 }
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* 内容容器 */
 
 .container{
-width:80%;
+width:85%;
+max-width:1200px;
 margin:auto;
-margin-top:60px;
 }
 
-/* 卡片 */
+.section{
+margin:60px 0;
+}
+
+.section-title{
+font-size:34px;
+margin-bottom:25px;
+color:#facc15;
+}
+
+/* 信息卡片 */
 
 .card{
-background:white;
+background:#1e293b;
 padding:30px;
-margin:30px 0;
-border-radius:12px;
-box-shadow:0 10px 20px rgba(0,0,0,0.2);
-transition:0.4s;
+border-radius:14px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+margin-bottom:30px;
+transition:0.35s;
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 30px rgba(0,0,0,0.3);
+transform:translateY(-8px);
+box-shadow:0 20px 35px rgba(0,0,0,0.6);
 }
 
-.card h2{
-color:#2a5298;
-margin-bottom:15px;
+.card h3{
+color:#facc15;
+margin-bottom:12px;
 }
 
-/* 视频区域 */
+/* 卡组网格 */
+
+.deck-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+.deck-card{
+background:#1e293b;
+padding:20px;
+border-radius:12px;
+transition:0.3s;
+}
+
+.deck-card:hover{
+transform:scale(1.05);
+background:#334155;
+}
+
+.deck-card h4{
+margin-bottom:10px;
+color:#facc15;
+}
+
+/* 视频 */
 
 .video{
-height:250px;
-background:#000;
-margin-top:15px;
-border-radius:8px;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:20px;
+margin-top:20px;
+position:relative;
+padding-bottom:56.25%;
+height:0;
+overflow:hidden;
+border-radius:10px;
+}
+
+.video iframe{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
 }
 
 /* 列表 */
 
 ul{
 margin-left:20px;
-}
-
-/* 评论区 */
-
-.comment{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 10px 20px rgba(0,0,0,0.2);
-}
-
-textarea{
-width:100%;
-height:120px;
-padding:10px;
-border-radius:6px;
-border:1px solid #ccc;
 margin-top:10px;
 }
 
-button{
-margin-top:10px;
-padding:10px 20px;
-border:none;
-background:#2a5298;
-color:white;
-border-radius:6px;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#1e3c72;
-}
+/* 页脚 */
 
 footer{
 text-align:center;
-color:white;
-padding:30px;
-margin-top:40px;
+margin-top:80px;
+padding:40px 0;
+background:#020617;
+color:#94a3b8;
 }
 
 </style>
@@ -175,143 +218,128 @@ margin-top:40px;
 
 <nav>
 <ul>
-<li><a href="#play">核心玩法与机制</a></li>
-<li><a href="#feature">游戏特色与现状</a></li>
-<li><a href="#deck">热门强势卡组推荐</a></li>
-<li><a href="#rule">卡组搭配通用原则</a></li>
+<li><a href="#play">核心玩法</a></li>
+<li><a href="#feature">游戏特色</a></li>
+<li><a href="#deck">强势卡组</a></li>
+<li><a href="#rule">搭配原则</a></li>
 </ul>
 </nav>
 
-<header>
+<div class="hero">
+<div class="hero-content">
 <h1>皇室战争</h1>
-</header>
+<p>策略 · 卡牌 · 实时竞技</p>
+</div>
+</div>
 
 <div class="container">
 
+<section class="section">
 <div class="card">
 <p>
-《部落冲突：皇室战争》（Clash Royale）是一款由芬兰游戏公司Supercell开发的融合了
-即时策略、卡牌与塔防元素的手机游戏，于2016年上线。玩家通过收集卡牌组建牌组，
-在实时对战中以摧毁对方城堡为目标。
+《部落冲突：皇室战争》是一款由 Supercell 开发的实时策略卡牌游戏。玩家通过收集卡牌、
+构建卡组并与全球玩家实时对战，以摧毁对方防御塔为目标。
 </p>
 </div>
+</section>
 
-<div class="card" id="play">
+<section class="section" id="play">
+<h2 class="section-title">核心玩法</h2>
 
-<h2>核心玩法与机制</h2>
-
-<ol>
-
-<li>
-获胜条件：每场对战的目标是摧毁对方的“国王塔”和“公主塔”。常规对战时间为3分钟，
-若未决出胜负则进入加时赛（“突然死亡”模式），最终通过比较摧毁塔的数量或塔剩余血量决定胜负。
-</li>
-
-<li>
-卡牌系统：卡牌是游戏核心，分为军队卡、建筑卡和法术卡三大类型。
-卡牌有普通、稀有、史诗、传奇等不同稀有度。玩家需要从收集的卡牌中挑选8张组建自己的战斗牌组。
-</li>
-
-<li>
-资源管理：使用卡牌需要消耗“圣水”，圣水会随时间自动增长（上限10点），合理分配圣水是取胜关键。
-比赛后期会进入“双倍圣水”甚至“三倍圣水”阶段，加快节奏。
-</li>
-
-<li>
-主要模式：游戏支持1v1实时对战、2v2合作对战、部落战以及各种挑战活动。
-</li>
-
-</ol>
-
-<div class="video">【玩法视频】</div>
-
+<div class="card">
+<h3>战斗目标</h3>
+<p>摧毁敌方公主塔和国王塔，3分钟内获得更多塔即获胜。</p>
 </div>
 
-<div class="card" id="feature">
-
-<h2>游戏特色与现状</h2>
-
-<ol>
-
-<li>实时与策略：游戏主打快节奏实时对战（每局3-5分钟），并具有“易上手，难精通”的深度策略性。</li>
-
-<li>收集与成长：玩家通过赢得对战、开启宝箱来收集和升级卡牌，提升实力。</li>
-
-<li>社交元素：玩家可以组建或加入部落，分享卡牌、进行私人对战或参与部落战。</li>
-
-<li>持续更新：游戏持续推出新卡牌、新竞技场、主题赛季和活动。</li>
-
-</ol>
-
-<div class="video">【特色视频】</div>
-
+<div class="card">
+<h3>卡牌系统</h3>
+<p>卡牌分为军队、建筑与法术三类。玩家需要从卡池中选择8张组成自己的战斗卡组。</p>
 </div>
 
-<div class="card" id="deck">
-
-<h2>热门强势卡组推荐</h2>
-
-<ol>
-
-<li>毒矿刺客消耗流：以野蛮人攻城槌、掘地矿工、毒药法术和幻影刺客为核心。</li>
-
-<li>三枪矿工流：核心是三个火枪手与矿工，搭配公主、骷髅守卫等卡牌。</li>
-
-<li>精英哥布林体系：核心搭配“精英哥布林+觉醒哥布林钻机”。</li>
-
-<li>2V2双矿工消耗流：适合双人模式，组合三个火枪手、矿工、哥布林飞桶、公主和熔炉。</li>
-
-<li>低费野猪电塔组合：圣水消耗仅约2.9，性价比高。</li>
-
-<li>地震皇猪迫炮流：双核速攻体系。</li>
-
-</ol>
-
-<div class="video">【卡牌解说视频】</div>
-
+<div class="card">
+<h3>圣水机制</h3>
+<p>出牌需要消耗圣水。圣水随时间恢复，合理的圣水管理是胜负关键。</p>
 </div>
 
-<div class="card" id="rule">
+<div class="video">
+<iframe src="https://www.youtube.com/embed/1RC1kfevGmE" frameborder="0" allowfullscreen></iframe>
+</div>
 
-<h2>卡组搭配通用原则</h2>
+</section>
 
-<ol>
+<section class="section" id="feature">
+<h2 class="section-title">游戏特色</h2>
 
-<li>费用平衡：平均圣水消耗建议在3.7到4.5之间。</li>
-
-<li>
-功能齐全：卡组应包含不同类型卡牌以应对各种局面：
-
+<div class="card">
 <ul>
-<li>单体伤害卡牌（如火枪手、迷你皮卡）</li>
-<li>溅射伤害卡牌（如女巫、火球）</li>
-<li>肉盾卡牌（如巨人、皮卡超人）</li>
-<li>对空卡牌（如飞龙宝宝、亡灵）</li>
-<li>防御建筑卡牌（如特斯拉电磁塔、加农炮）</li>
+<li>实时对战，平均3分钟一局</li>
+<li>全球竞技天梯排名系统</li>
+<li>数百张卡牌自由组合</li>
+<li>部落战与团队协作玩法</li>
+<li>赛季更新与新卡持续推出</li>
 </ul>
+</div>
 
-</li>
+</section>
 
-</ol>
+<section class="section" id="deck">
+<h2 class="section-title">热门卡组</h2>
+
+<div class="deck-grid">
+
+<div class="deck-card">
+<h4>毒矿消耗流</h4>
+<p>矿工 + 毒药持续消耗敌方防御塔。</p>
+</div>
+
+<div class="deck-card">
+<h4>三枪矿工流</h4>
+<p>三个火枪手作为核心输出。</p>
+</div>
+
+<div class="deck-card">
+<h4>精英哥布林速攻</h4>
+<p>依靠高速突袭快速破塔。</p>
+</div>
+
+<div class="deck-card">
+<h4>野猪2.9循环</h4>
+<p>低费高频进攻的经典卡组。</p>
+</div>
+
+<div class="deck-card">
+<h4>皇猪地震</h4>
+<p>皇室野猪配合地震压制建筑。</p>
+</div>
+
+<div class="deck-card">
+<h4>迫击炮控制</h4>
+<p>通过防守反击慢慢压制。</p>
+</div>
 
 </div>
 
-<div class="comment">
+</section>
 
-<h2>评论区</h2>
+<section class="section" id="rule">
+<h2 class="section-title">卡组搭配原则</h2>
 
-<textarea placeholder="写下你的评论..."></textarea>
-<br>
-<button>发布评论</button>
-
+<div class="card">
+<ul>
+<li>平均圣水消耗建议 3.0 - 4.0</li>
+<li>必须拥有空中防御单位</li>
+<li>至少一张法术卡</li>
+<li>具备防守反击能力</li>
+<li>确保卡组循环速度合理</li>
+</ul>
 </div>
+
+</section>
 
 </div>
 
 <footer>
-
-皇室战争攻略网页示例
-
+<p>皇室战争策略指南网站 · Clash Royale Fan Guide</p>
 </footer>
 
 </body>
